@@ -1,5 +1,9 @@
 # Documentation
 
+## LUMC documentation
+
+- [LUMC GitLab](https://humgenprojects.lumc.nl/trac/humgenprojects/wiki/gitlab) Read more about this LUMC GitLab server and how to use it.
+
 ## User documentation
 
 - [API](api/README.md) Automate GitLab via a simple and powerful API.
