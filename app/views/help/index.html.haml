@@ -40,5 +40,5 @@
         = preserve do
           - readme_text = File.read(Rails.root.join("doc", "README.md"))
           - text = readme_text.dup
-          - readme_text.scan(/\]\(([^(]+)\)/) { |match| text.gsub!(match.first, "help/#{match.first}") }
+          - readme_text.scan(/\]\((?!http)([^(]+)\)/) { |match| text.gsub!(match.first, "help/#{match.first}") }
           = markdown text
