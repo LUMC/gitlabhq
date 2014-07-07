@@ -1,6 +1,6 @@
 Hi <%= @user.name %>!
 
-The Administrator created an account for you. Now you are a member of the company GitLab application.
+The Administrator created an account for you. Now you are a member of the LUMC GitLab application.
 
 login.................. <%= @user.email %>
 <% if @user.created_by_id %>
@@ -8,3 +8,5 @@ login.................. <%= @user.email %>
 
   <%= reset_token_expire_message %>
 <% end %>
+
+Read more about this LUMC GitLab server and how to use it: https://humgenprojects.lumc.nl/trac/humgenprojects/wiki/gitlab
