@@ -112,6 +112,15 @@ resources :namespaces, path: '/', constraints: { id: /[a-zA-Z.0-9_\-]+/ }, only:
 
       scope do
         get(
+          '/ipython_notebook/*id',
+          to: 'ipython_notebook#show',
+          constraints: { id: /.+/, format: /(html|js)/ },
+          as: :ipython_notebook
+        )
+      end
+
+      scope do
+        get(
           '/tree/*id',
           to: 'tree#show',
           constraints: { id: /.+/, format: /(html|js)/ },
