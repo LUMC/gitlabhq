@@ -45,6 +45,13 @@ get(
 )
 
 get(
+  '/ipython_notebook/*id',
+  to: 'ipython_notebook#show',
+  constraints: { id: /.+/, format: /(html|js)/ },
+  as: :ipython_notebook
+)
+
+get(
   '/tree/*id',
   to: 'tree#show',
   constraints: { id: /.+/, format: /(html|js)/ },
