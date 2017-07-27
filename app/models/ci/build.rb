@@ -251,7 +251,8 @@ module Ci
     def extract_coverage(text, regex)
       return unless regex
 
-      matches = text.scan(Regexp.new(regex)).last
+      regex = Gitlab::UntrustedRegexp.new(regex)
+      matches = regex.scan(text).last
       matches = matches.last if matches.is_a?(Array)
       coverage = matches.gsub(/\d+(\.\d+)?/).first
 
@@ -540,6 +541,8 @@ module Ci
     end
 
     def dependencies
+      return [] if empty_dependencies?
+
       depended_jobs = depends_on_builds
 
       return depended_jobs unless options[:dependencies].present?
@@ -547,6 +550,10 @@ module Ci
       depended_jobs.select do |job|
         options[:dependencies].include?(job.name)
       end
+    end
+
+    def empty_dependencies?
+      options[:dependencies]&.empty?
     end
 
     private
